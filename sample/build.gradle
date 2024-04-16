@@ -1,15 +1,14 @@
-plugins {
-    id 'application'
-}
-
-group = 'com.smontiel'
-version = '1.0-SNAPSHOT'
+apply plugin: 'java'
+apply plugin: 'application'
 
 repositories {
     mavenCentral()
+
+    maven { url 'https://jitpack.io' }
 }
 
 dependencies {
+    //implementation 'com.github.SMontiel:openai-client-java:5ed68e63b6'
     implementation project(':library')
 
     testImplementation platform('org.junit:junit-bom:5.9.1')
@@ -17,7 +16,7 @@ dependencies {
 }
 
 application {
-    mainClassName = 'com.smontiel.Main'
+    mainClassName = 'sample.Main'
 }
 
 test {
