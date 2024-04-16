@@ -8,7 +8,7 @@ repositories {
 }
 
 dependencies {
-    //implementation 'com.github.SMontiel:openai-client-java:5ed68e63b6'
+    //implementation 'com.github.SMontiel:openai-client-java:7673c3074e'
     implementation project(':library')
 
     testImplementation platform('org.junit:junit-bom:5.9.1')
@@ -21,4 +21,11 @@ application {
 
 test {
     useJUnitPlatform()
+}
+
+tasks.register("run-debugger") {
+    tasks.run {
+        debug true
+        //jvmArgs "-agentlib:jdwp=transport=dt_socket,server=y,suspend=y,address=5005"
+    }.exec()
 }
