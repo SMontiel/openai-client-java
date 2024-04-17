@@ -1,6 +1,9 @@
 apply plugin: 'java'
 apply plugin: 'application'
 
+sourceCompatibility = 20 // java 8
+targetCompatibility = 20
+
 repositories {
     mavenCentral()
 
@@ -8,6 +11,7 @@ repositories {
 }
 
 dependencies {
+    implementation 'com.github.SMontiel:dotenv:0.0.2'
     //implementation 'com.github.SMontiel:openai-client-java:7673c3074e'
     implementation project(':library')
 
