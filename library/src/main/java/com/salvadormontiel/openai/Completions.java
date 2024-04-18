@@ -48,7 +48,9 @@ public class Completions {
 
         HttpRequest request = getRequest(toJson(input));
 
-        return ResponseBodyPublisher.createPublisher(httpClient, request);
+        return ResponseBodyPublisher.createPublisher(
+                httpClient.sendAsync(request, HttpResponse.BodyHandlers.ofPublisher())
+        );
     }
 
     private HttpRequest getRequest(String json) {
