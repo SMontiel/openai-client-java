@@ -9,6 +9,10 @@ public class OpenAI {
         this.apiKey = notNull(apiKey);
     }
 
+    public Audio audio() {
+        return new Audio(apiKey);
+    }
+
     public Chat chat() {
         return new Chat(apiKey);
     }

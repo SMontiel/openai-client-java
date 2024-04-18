@@ -1,9 +1,11 @@
 package com.salvadormontiel.openai.input;
 
+import com.squareup.moshi.Json;
+
 public class ContentPart {
     public String type;
     public String text;
-    public String imageUrl;
+    @Json(name = "image_url") public String imageUrl;
 
     private ContentPart(String type, String text, String imageUrl) {
         this.type = type;
