@@ -1,6 +1,5 @@
 package com.salvadormontiel.openai.response;
 
-import com.salvadormontiel.openai.output.LogProbs;
 import com.squareup.moshi.Json;
 
 import java.util.List;

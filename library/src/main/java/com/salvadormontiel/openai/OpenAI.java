@@ -12,4 +12,8 @@ public class OpenAI {
     public Chat chat() {
         return new Chat(apiKey);
     }
+
+    public Models models() {
+        return new Models(apiKey);
+    }
 }

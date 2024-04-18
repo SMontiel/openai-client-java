@@ -1,4 +1,4 @@
-package com.salvadormontiel.openai.output;
+package com.salvadormontiel.openai.response;
 
 import com.squareup.moshi.Json;
 

@@ -3,8 +3,10 @@ package sample;
 public class Main {
 
     public static void main(String[] args) {
-        ChatCompletionSample.sync();
+        //ChatCompletionSample.sync();
 
-        ChatCompletionSample.asyncStream();
+        //ChatCompletionSample.asyncStream();
+
+        //ModelsSample.list();
     }
 }

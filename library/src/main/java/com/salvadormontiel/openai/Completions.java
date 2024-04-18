@@ -1,7 +1,7 @@
 package com.salvadormontiel.openai;
 
 import com.salvadormontiel.openai.input.ChatCompletionInput;
-import com.salvadormontiel.openai.output.ChatCompletionOutput;
+import com.salvadormontiel.openai.response.ChatCompletion;
 import com.salvadormontiel.openai.response.ChatCompletionChunk;
 import com.salvadormontiel.openai.utils.ResponseBodyPublisher;
 
@@ -24,7 +24,7 @@ public class Completions {
         this.apiKey = apiKey;
     }
 
-    public ChatCompletionOutput create(ChatCompletionInput input) {
+    public ChatCompletion create(ChatCompletionInput input) {
         if (input.stream) {
             throw new RuntimeException("The 'stream' field must be false, use the createAsStream() function if you want to get a stream");
         }
@@ -38,7 +38,7 @@ public class Completions {
             throw new RuntimeException(e);
         }
 
-        return fromJson(response.body(), ChatCompletionOutput.class);
+        return fromJson(response.body(), ChatCompletion.class);
     }
 
     public Flow.Publisher<ChatCompletionChunk> createAsStream(ChatCompletionInput input) {
