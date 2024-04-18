@@ -26,10 +26,10 @@ application {
 test {
     useJUnitPlatform()
 }
-
+/*
 tasks.register("run-debugger") {
     tasks.run {
         debug true
         //jvmArgs "-agentlib:jdwp=transport=dt_socket,server=y,suspend=y,address=5005"
     }.exec()
-}
+}*/
