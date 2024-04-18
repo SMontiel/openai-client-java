@@ -8,5 +8,7 @@ public class Main {
         //ChatCompletionSample.asyncStream();
 
         //ModelsSample.list();
+
+        //ModelsSample.retrieve();
     }
 }
