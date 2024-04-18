@@ -1,6 +1,7 @@
 package com.salvadormontiel.openai;
 
 import com.salvadormontiel.openai.response.Model;
+import com.salvadormontiel.openai.response.ModelDeletion;
 import com.salvadormontiel.openai.response.ModelsOutput;
 
 import java.io.IOException;
@@ -41,6 +42,24 @@ public class Models {
         }
 
         return fromJson(response.body(), Model.class);
+    }
+
+    public ModelDeletion delete(String modelName) {
+        HttpResponse<String> response;
+        try {
+            String url = "https://api.openai.com/v1/models/" + modelName;
+            HttpRequest request = HttpRequest.newBuilder()
+                    .uri(new URI(url))
+                    .DELETE()
+                    .header("Authorization", "Bearer " + apiKey)
+                    .header("Content-Type", "application/json")
+                    .build();
+            response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
+        } catch (IOException | InterruptedException | URISyntaxException e) {
+            throw new RuntimeException(e);
+        }
+
+        return fromJson(response.body(), ModelDeletion.class);
     }
 
     private HttpRequest getRequest(String url) {

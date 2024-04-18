@@ -10,5 +10,7 @@ public class Main {
         //ModelsSample.list();
 
         //ModelsSample.retrieve();
+
+        ModelsSample.delete();
     }
 }
