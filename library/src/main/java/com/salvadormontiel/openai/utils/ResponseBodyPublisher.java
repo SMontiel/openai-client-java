@@ -18,7 +18,7 @@ public class ResponseBodyPublisher {
         SubmissionPublisher<ChatCompletionChunk> publisher = new SubmissionPublisher<>();
 
         future.thenAccept(response -> {
-            response.body().subscribe(new Flow.Subscriber<>() {
+            response.body().subscribe(new Flow.Subscriber<List<ByteBuffer>>() {
                 private Flow.Subscription subscription;
 
                 @Override
