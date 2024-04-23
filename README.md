@@ -1,10 +1,31 @@
-[![](https://jitpack.io/v/com.salvadormontiel/openai-client-java.svg)](https://jitpack.io/#com.salvadormontiel/openai-client-java)
-
 # openai-client-java
+
+[![](https://jitpack.io/v/com.salvadormontiel/openai-client-java.svg)](https://jitpack.io/#com.salvadormontiel/openai-client-java)
 
 OpenAI client for Java, replicates the official Python client.
 
 > This library does not support legacy and/or deprecated APIs by OpenAI
+
+## Download
+
+#### Step 1. Add the JitPack repository to your build file
+Add it in your root build.gradle at the end of repositories:
+
+``` groovy
+allprojects {
+  repositories {
+    ...
+    maven { url 'https://jitpack.io' }
+  }
+}
+```
+
+#### Step 2. Add the dependency
+``` groovy
+dependencies {
+  compile 'com.salvadormontiel:openai-client-java:0.0.4'
+}
+```
 
 ## Supported APIs
 
@@ -89,3 +110,7 @@ OpenAI client for Java, replicates the official Python client.
   - [ ] Retrieve vector store file batch
   - [ ] Cancel vector store file batch
   - [ ] List vector store files in a batch
+
+## Contributing
+
+Do you want to contribute or give me a hand a hand with the documentation? I will appreciate that!
