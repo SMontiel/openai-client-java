@@ -17,6 +17,10 @@ public class OpenAI {
         return new Chat(apiKey);
     }
 
+    public Embeddings embeddings() {
+        return new Embeddings(apiKey);
+    }
+
     public Models models() {
         return new Models(apiKey);
     }

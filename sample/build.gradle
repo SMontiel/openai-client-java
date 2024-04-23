@@ -11,8 +11,8 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.github.SMontiel:dotenv:0.0.2'
-    //implementation 'com.github.SMontiel:openai-client-java:9334429eae'
+    implementation 'com.salvadormontiel:dotenv:0.0.2'
+    //implementation 'com.salvadormontiel:openai-client-java:0.0.3'
     implementation project(':library')
 
     testImplementation platform('org.junit:junit-bom:5.9.1')
