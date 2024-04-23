@@ -12,4 +12,8 @@ public class Audio {
     public Speech speech() {
         return new Speech(apiKey);
     }
+
+    public Transcriptions transcriptions() {
+        return new Transcriptions(apiKey);
+    }
 }
