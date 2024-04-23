@@ -22,5 +22,7 @@ public class Main {
         //AudioSample.createSpeech();
         //AudioSample.createSimpleTranscription();
         //AudioSample.createVerboseTranscription();
+        //AudioSample.createSimpleTranslation();
+        //AudioSample.createVerboseTranslation();
     }
 }

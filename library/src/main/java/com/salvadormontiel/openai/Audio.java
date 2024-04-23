@@ -16,4 +16,8 @@ public class Audio {
     public Transcriptions transcriptions() {
         return new Transcriptions(apiKey);
     }
+
+    public Translations translations() {
+        return new Translations(apiKey);
+    }
 }

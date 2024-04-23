@@ -4,6 +4,7 @@ import com.salvadormontiel.dotenv.DotEnv;
 import com.salvadormontiel.openai.OpenAI;
 import com.salvadormontiel.openai.input.SpeechInput;
 import com.salvadormontiel.openai.input.TranscriptionInput;
+import com.salvadormontiel.openai.input.TranslationInput;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -43,6 +44,28 @@ public class AudioSample {
                 .setResponseFormat("verbose_json")
                 .build();
         var transcription = getClient().audio().transcriptions().create(input);
+        System.out.println(transcription);
+    }
+
+    public static void createSimpleTranslation() {
+        Path localFile = Paths.get("sample-files/speech.mp3");
+        var input = new TranslationInput.Builder()
+                .setModel("whisper-1")
+                .setFile(localFile)
+                .setResponseFormat("json")
+                .build();
+        var transcription = getClient().audio().translations().create(input);
+        System.out.println(transcription);
+    }
+
+    public static void createVerboseTranslation() {
+        Path localFile = Paths.get("sample-files/speech.mp3");
+        var input = new TranslationInput.Builder()
+                .setModel("whisper-1")
+                .setFile(localFile)
+                .setResponseFormat("verbose_json")
+                .build();
+        var transcription = getClient().audio().translations().create(input);
         System.out.println(transcription);
     }
 }

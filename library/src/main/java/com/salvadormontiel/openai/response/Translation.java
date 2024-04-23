@@ -4,51 +4,30 @@ import com.squareup.moshi.Json;
 
 import java.util.List;
 
-public class Transcription {
+public class Translation {
     public String text;
     public String language;
     public String duration;
-    public List<Word> words;
     public List<Segment> segments;
+    public String task;
 
-    public Transcription(String text, String language, String duration, List<Word> words, List<Segment> segments) {
+    public Translation(String text, String language, String duration, List<Segment> segments, String task) {
         this.text = text;
         this.language = language;
         this.duration = duration;
-        this.words = words;
         this.segments = segments;
+        this.task = task;
     }
 
     @Override
     public String toString() {
-        return "Transcription{" +
+        return "Translation{" +
                 "text='" + text + '\'' +
                 (language != null ? ", language='" + language + '\'' : "") +
                 (duration != null ? ", duration='" + duration + '\'' : "") +
-                (words != null ? ", words=" + words : "") +
                 (segments != null ? ", segments=" + segments : "") +
+                (task != null ? ", task='" + task + '\'' : "") +
                 '}';
-    }
-
-    public static class Word {
-        public String word;
-        public double start;
-        public double end;
-
-        public Word(String word, double start, double end) {
-            this.word = word;
-            this.start = start;
-            this.end = end;
-        }
-
-        @Override
-        public String toString() {
-            return "Word{" +
-                    "word='" + word + '\'' +
-                    ", start=" + start +
-                    ", end=" + end +
-                    '}';
-        }
     }
 
     public static class Segment {
