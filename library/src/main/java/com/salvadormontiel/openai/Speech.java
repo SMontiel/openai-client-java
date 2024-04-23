@@ -30,7 +30,7 @@ public class Speech {
         Path file = Paths.get("/tmp/speech-" + System.currentTimeMillis() + "-" + input.input.hashCode()  + "." + input.responseFormat);
 
         try {
-            var response = httpClient.send(request, HttpResponse.BodyHandlers.ofFile(file));
+            HttpResponse<Path> response = httpClient.send(request, HttpResponse.BodyHandlers.ofFile(file));
             return response.body();
         } catch (IOException | InterruptedException e) {
             throw new RuntimeException(e);

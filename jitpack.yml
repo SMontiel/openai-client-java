@@ -1,5 +1,5 @@
 jdk:
-  - openjdk8
+  - openjdk11
 install:
   - echo "Only publish the library"
   - ./gradlew library:clean -Pgroup=com.github.SMontiel -xtest library:assemble library:publishToMavenLocal
