@@ -1,13 +1,14 @@
 package sample;
 
 import com.salvadormontiel.dotenv.DotEnv;
+import com.salvadormontiel.openai.FunctionExecutor;
 import com.salvadormontiel.openai.OpenAI;
 import com.salvadormontiel.openai.input.ChatCompletionInput;
 import com.salvadormontiel.openai.input.ChatMessage;
 import com.salvadormontiel.openai.input.ToolCall;
 import com.salvadormontiel.openai.response.ChatCompletionChunk;
 
-import java.util.ArrayList;
+import java.util.*;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.Flow;
 
@@ -86,6 +87,40 @@ public class ChatCompletionSample {
                 .setModel("gpt-3.5-turbo")
                 .setMessages(messages)
                 .setStream(false);
+    }
+
+    public static void tools() {
+        FunctionExecutor executor = new FunctionExecutor();
+        executor.addFunction(
+                "get_current_weather",
+                "Get the current weather in a given location",
+                Weather.class,
+                weather -> {
+                    var unit = weather.unit != null ? weather.unit : Weather.WeatherUnit.celsius;
+                    var temperature = new Random().nextInt(45);
+                    var w = temperature < 15 ? "cold" : (temperature < 35 ? "sunny" : "drought");
+                    var apiResponse = "City " + weather.location + ", " + temperature + "° " + unit + ", weather: " + w;
+                    System.out.println("Weather API response: " + apiResponse);
+
+                    return apiResponse;
+                });
+
+        var question = "What's the weather like in Boston today?";
+        System.out.println(question);
+
+        var input = new ChatCompletionInput.Builder()
+                .setModel("gpt-3.5-turbo")
+                .addMessage(
+                        new ChatMessage.Builder()
+                                .asUserRole()
+                                .setContent(question)
+                                .build()
+                )
+                .setTools(executor.getTools())
+                .build();
+        var completion = getClient().chat().completions().create(input, executor);
+
+        System.out.println("> " + completion.choices.get(0).message.content);
     }
 
     public static void usingChatMessageBuilders() {

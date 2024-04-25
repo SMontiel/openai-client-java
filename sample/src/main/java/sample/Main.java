@@ -5,6 +5,7 @@ public class Main {
     public static void main(String[] args) {
         //ChatCompletionSample.sync();
         //ChatCompletionSample.asyncStream();
+        ChatCompletionSample.tools();
 
         //ModelsSample.list();
         //ModelsSample.retrieve();

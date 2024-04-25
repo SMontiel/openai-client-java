@@ -2,6 +2,7 @@ package com.salvadormontiel.openai.input;
 
 import com.squareup.moshi.Json;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -100,6 +101,14 @@ public class ChatCompletionInput {
             return this;
         }
 
+        public Builder addMessage(ChatMessage message) {
+            if (this.messages == null) {
+                this.messages = new ArrayList<>();
+            }
+            this.messages.add(message);
+            return this;
+        }
+
         public Builder setModel(String model) {
             this.model = model;
             return this;
@@ -175,8 +184,18 @@ public class ChatCompletionInput {
             return this;
         }
 
+        public Builder addTool(Tool tool) {
+            if (this.tools == null) {
+                this.tools = new ArrayList<>();
+            }
+            this.tools.add(tool);
+
+            return this;
+        }
+
         public Builder setTools(List<Tool> tools) {
             this.tools = tools;
+
             return this;
         }
 

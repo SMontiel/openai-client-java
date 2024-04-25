@@ -9,7 +9,8 @@ OpenAI client for Java, replicates the official Python client.
 ## Download
 
 #### Step 1. Add the JitPack repository to your build file
-Add it in your root build.gradle at the end of repositories:
+
+Add it in your root `build.gradle` at the end of repositories:
 
 ``` groovy
 allprojects {
@@ -21,6 +22,7 @@ allprojects {
 ```
 
 #### Step 2. Add the dependency
+
 ``` groovy
 dependencies {
   compile 'com.salvadormontiel:openai-client-java:0.0.4'
@@ -33,6 +35,7 @@ dependencies {
   - [x] Create speech
   - [x] Create transcription
   - [x] Create translation
+  - [x] Function calling
 - Chat
   - [x] Create chat completion
   - [x] Stream chat completion
@@ -66,7 +69,7 @@ dependencies {
 - Moderations
   - [ ] Create moderation
 
-## Beta
+## Beta APIs
 
 - Assistants
   - [ ] Create assistant

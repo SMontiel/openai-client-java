@@ -16,7 +16,7 @@ public class ChatMessage {
     @Json(name = "tool_calls") public List<ToolCall> toolCalls;
     @Json(name = "tool_call_id") public String toolCallId;
 
-    ChatMessage(@NotNull String role, String name, Object content, List<ToolCall> toolCalls, String toolCallId) {
+    public ChatMessage(@NotNull String role, String name, Object content, List<ToolCall> toolCalls, String toolCallId) {
         this.role = notNull(role);
         this.name = name;
         this.content = content;
