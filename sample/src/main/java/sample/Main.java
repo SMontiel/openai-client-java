@@ -20,5 +20,6 @@ public class Main {
         //EmbeddingsSample.create();
 
         //ImagesSample.generate();
+        //ImagesSample.edit();
     }
 }

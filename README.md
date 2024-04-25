@@ -60,7 +60,7 @@ dependencies {
   - [ ] Delete file
 - Images
   - [x] Create image
-  - [ ] Create image edit
+  - [x] Create image edit
   - [ ] Create image variation
 - Models
   - [x] List models
