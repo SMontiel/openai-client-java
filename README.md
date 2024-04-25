@@ -61,7 +61,7 @@ dependencies {
 - Images
   - [x] Create image
   - [x] Create image edit
-  - [ ] Create image variation
+  - [x] Create image variation
 - Models
   - [x] List models
   - [x] Retrieve model

@@ -2,6 +2,7 @@ package sample;
 
 import com.salvadormontiel.openai.input.ImageEditInput;
 import com.salvadormontiel.openai.input.ImageInput;
+import com.salvadormontiel.openai.input.ImageVariationInput;
 
 import java.nio.file.Paths;
 
@@ -35,6 +36,21 @@ public class ImagesSample {
                 .setSize("1024x1024")
                 .build();
         var response = client.images().edit(input);
+        System.out.println(response);
+    }
+
+    public static void createVariation() {
+        var client = AudioSample.getClient();
+
+        var image = Paths.get("sample-files/indoor-image.png");
+
+        var input = new ImageVariationInput.Builder()
+                .setImage(image)
+                .setModel("dall-e-2")
+                .setN(1)
+                .setSize("1024x1024")
+                .build();
+        var response = client.images().createVariation(input);
         System.out.println(response);
     }
 }

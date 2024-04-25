@@ -2,6 +2,7 @@ package com.salvadormontiel.openai;
 
 import com.salvadormontiel.openai.input.ImageEditInput;
 import com.salvadormontiel.openai.input.ImageInput;
+import com.salvadormontiel.openai.input.ImageVariationInput;
 import com.salvadormontiel.openai.response.ImageResponse;
 import com.salvadormontiel.openai.utils.MultipartRequest;
 import com.salvadormontiel.openai.utils.Pair;
@@ -46,6 +47,18 @@ public class Images {
         try {
             HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
 
+            return fromJson(response.body(), ImageResponse.class);
+        } catch (IOException | InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public ImageResponse createVariation(ImageVariationInput input) {
+        HttpRequest request = getMultiPartRequest("https://api.openai.com/v1/images/variations", input.toMultiMap());
+
+        try {
+            HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
+            System.out.println(response.body());
             return fromJson(response.body(), ImageResponse.class);
         } catch (IOException | InterruptedException e) {
             throw new RuntimeException(e);

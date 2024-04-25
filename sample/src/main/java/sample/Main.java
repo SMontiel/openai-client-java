@@ -21,5 +21,6 @@ public class Main {
 
         //ImagesSample.generate();
         //ImagesSample.edit();
+        //ImagesSample.createVariation();
     }
 }
