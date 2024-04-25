@@ -59,7 +59,7 @@ dependencies {
   - [ ] Retrieve file
   - [ ] Delete file
 - Images
-  - [ ] Create image
+  - [x] Create image
   - [ ] Create image edit
   - [ ] Create image variation
 - Models

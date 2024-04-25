@@ -5,7 +5,7 @@ public class Main {
     public static void main(String[] args) {
         //ChatCompletionSample.sync();
         //ChatCompletionSample.asyncStream();
-        ChatCompletionSample.tools();
+        //ChatCompletionSample.tools();
 
         //ModelsSample.list();
         //ModelsSample.retrieve();
@@ -18,5 +18,7 @@ public class Main {
         //AudioSample.createVerboseTranslation();
 
         //EmbeddingsSample.create();
+
+        //ImagesSample.generate();
     }
 }

@@ -21,6 +21,10 @@ public class OpenAI {
         return new Embeddings(apiKey);
     }
 
+    public Images images() {
+        return new Images(apiKey);
+    }
+
     public Models models() {
         return new Models(apiKey);
     }
