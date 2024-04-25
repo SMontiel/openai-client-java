@@ -12,7 +12,7 @@ repositories {
 
 dependencies {
     implementation 'com.salvadormontiel:dotenv:0.0.2'
-    //implementation 'com.salvadormontiel:openai-client-java:0.0.5'
+    //implementation 'com.salvadormontiel:openai-client-java:0.0.6'
     implementation project(':library')
 
     compileOnly 'org.jetbrains:annotations:24.1.0'

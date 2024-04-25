@@ -25,7 +25,7 @@ allprojects {
 
 ``` groovy
 dependencies {
-  compile 'com.salvadormontiel:openai-client-java:0.0.5'
+  compile 'com.salvadormontiel:openai-client-java:0.0.6'
 }
 ```
 
