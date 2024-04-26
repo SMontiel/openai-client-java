@@ -166,6 +166,49 @@ var response = client.images().createVariation(input);
 System.out.println(response.data.get(0).url);
 ```
 
+### Create audio speech
+
+``` java
+var client = new OpenAI(System.getenv("OPENAI_API_KEY"));
+
+var input = new SpeechInput.Builder()
+        .setModel("tts-1")
+        .setInput("The quick brown fox jumped over the lazy dog.")
+        .setVoice("alloy")
+        .build();
+var file = client.audio().speech().create(input);
+System.out.println(file.toAbsolutePath());
+```
+
+### Create transcription
+
+``` java
+var client = new OpenAI(System.getenv("OPENAI_API_KEY"));
+
+Path localFile = Paths.get("sample-files/speech.mp3");
+var input = new TranscriptionInput.Builder()
+        .setModel("whisper-1")
+        .setFile(localFile)
+        .build();
+var transcription = client.audio().transcriptions().create(input);
+System.out.println(transcription.text);
+```
+
+### Create translation
+
+``` java
+var client = new OpenAI(System.getenv("OPENAI_API_KEY"));
+
+Path localFile = Paths.get("sample-files/speech.mp3");
+var input = new TranslationInput.Builder()
+        .setModel("whisper-1")
+        .setFile(localFile)
+        .setResponseFormat("json")
+        .build();
+var transcription = client.audio().translations().create(input);
+System.out.println(transcription.text);
+```
+
 ## Supported APIs
 
 - Audio
