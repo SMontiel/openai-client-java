@@ -96,7 +96,7 @@ public class ChatCompletionSample {
                 "Get the current weather in a given location",
                 Weather.class,
                 weather -> {
-                    var unit = weather.unit != null ? weather.unit : Weather.WeatherUnit.celsius;
+                    var unit = weather.unit != null ? weather.unit : WeatherUnit.CELSIUS;
                     var temperature = new Random().nextInt(45);
                     var w = temperature < 15 ? "cold" : (temperature < 35 ? "sunny" : "drought");
                     var apiResponse = "City " + weather.location + ", " + temperature + "° " + unit + ", weather: " + w;
@@ -106,7 +106,7 @@ public class ChatCompletionSample {
                 });
 
         var question = "What's the weather like in Boston today?";
-        System.out.println(question);
+        System.out.println("Question:" + question);
 
         var input = new ChatCompletionInput.Builder()
                 .setModel("gpt-3.5-turbo")

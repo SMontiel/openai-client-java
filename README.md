@@ -113,6 +113,57 @@ completion.subscribe(new Flow.Subscriber<>() {
 });
 ```
 
+#### Function calling
+
+``` java
+public enum WeatherUnit {
+    CELSIUS, FAHRENHEIT;
+}
+
+public class Weather implements FunctionProperties {
+    @PropertyDetails(description = "The city and state, e.g. San Francisco, CA", required = true)
+    public String location;
+
+    public WeatherUnit unit;
+}
+```
+
+``` java
+var client = new OpenAI(System.getenv("OPENAI_API_KEY"));
+
+FunctionExecutor executor = new FunctionExecutor();
+executor.addFunction(
+        "get_current_weather",
+        "Get the current weather in a given location",
+        Weather.class,
+        weather -> {
+            var unit = weather.unit != null ? weather.unit : WeatherUnit.CELSIUS;
+            var temperature = new Random().nextInt(45);
+            var w = temperature < 15 ? "cold" : (temperature < 35 ? "sunny" : "drought");
+            var apiResponse = "City " + weather.location + ", " + temperature + "° " + unit + ", weather: " + w;
+            System.out.println("\nWeather API response: " + apiResponse);
+
+            return apiResponse;
+        });
+
+var question = "What's the weather like in Boston today?";
+System.out.println("Question: " + question);
+
+var input = new ChatCompletionInput.Builder()
+        .setModel("gpt-3.5-turbo")
+        .addMessage(
+                new ChatMessage.Builder()
+                        .asUserRole()
+                        .setContent(question)
+                        .build()
+        )
+        .setTools(executor.getTools())
+        .build();
+var completion = client.chat().completions().create(input, executor);
+
+System.out.println("\n> " + completion.choices.get(0).message.content);
+```
+
 ### Generate image
 
 ``` java

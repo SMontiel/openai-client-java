@@ -12,8 +12,4 @@ public class Weather implements FunctionProperties {
 
     @Nullable
     public WeatherUnit unit;
-
-    public enum WeatherUnit {
-        celsius, fahrenheit;
-    }
 }
