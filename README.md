@@ -209,6 +209,21 @@ var transcription = client.audio().translations().create(input);
 System.out.println(transcription.text);
 ```
 
+### Create embeddings
+
+``` java
+var client = new OpenAI(System.getenv("OPENAI_API_KEY"));
+
+var input = new EmbeddingsInput.Builder()
+        .setInput("The food was delicious and the waiter...")
+        .setModel("text-embedding-ada-002")
+        .setEncodingFormat("float")
+        .build();
+
+var embeddings = client.embeddings().create(input);
+System.out.println(embeddings);
+```
+
 ## Supported APIs
 
 - Audio
