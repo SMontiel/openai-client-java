@@ -29,6 +29,90 @@ dependencies {
 }
 ```
 
+## How to use it?
+
+### Chat completion
+
+``` java
+var client = new OpenAI(System.getenv("OPENAI_API_KEY"));
+
+var messages = new ArrayList<ChatMessage>();
+messages.add(
+        new ChatMessage.Builder()
+                .asSystemRole()
+                .setContent("You are a helpful assistant.")
+                .build()
+);
+messages.add(
+        new ChatMessage.Builder()
+                .asUserRole()
+                .setContent("count to 10, each number in a new line")
+                .build()
+);
+
+var input = new ChatCompletionInput.Builder()
+        .setModel("gpt-3.5-turbo")
+        .setMessages(messages)
+        .build();
+
+var completion = client.chat().completions().create(input);
+System.out.println(completion.choices.get(0).message.content);
+```
+
+### Streaming chat completion
+
+``` java
+var client = new OpenAI(System.getenv("OPENAI_API_KEY"));
+
+var messages = new ArrayList<ChatMessage>();
+messages.add(
+        new ChatMessage.Builder()
+                .asSystemRole()
+                .setContent("You are a helpful assistant.")
+                .build()
+);
+messages.add(
+        new ChatMessage.Builder()
+                .asUserRole()
+                .setContent("count to 10, each number in a new line")
+                .build()
+);
+
+var input = new ChatCompletionInput.Builder()
+        .setModel("gpt-3.5-turbo")
+        .setMessages(messages)
+        .setStream(true)
+        .build();
+
+var completion = client.chat().completions().createAsStream(input);
+
+completion.subscribe(new Flow.Subscriber<>() {
+    private Flow.Subscription subscription;
+
+    @Override
+    public void onSubscribe(Flow.Subscription subscription) {
+        this.subscription = subscription;
+        subscription.request(1);
+    }
+
+    @Override
+    public void onNext(ChatCompletionChunk chunk) {
+        String content = chunk.choices.get(0).delta.content;
+        if (content != null) System.out.print(content);
+
+        subscription.request(1);
+    }
+
+    @Override
+    public void onError(Throwable throwable) {
+        throwable.printStackTrace();
+    }
+
+    @Override
+    public void onComplete() {}
+});
+```
+
 ## Supported APIs
 
 - Audio
