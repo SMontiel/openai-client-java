@@ -113,6 +113,59 @@ completion.subscribe(new Flow.Subscriber<>() {
 });
 ```
 
+### Generate image
+
+``` java
+var client = new OpenAI(System.getenv("OPENAI_API_KEY"));
+
+var input = new ImageInput.Builder()
+        .setModel("dall-e-3")
+        .setPrompt("A cute baby sea otter")
+        .setN(1)
+        .setSize("1024x1024")
+        .build();
+var response = client.images().generate(input);
+System.out.println(response.data.get(0).url);
+System.out.println(response.data.get(0).revisedPrompt);
+```
+
+### Create edited image
+
+``` java
+var client = new OpenAI(System.getenv("OPENAI_API_KEY"));
+
+var image = Paths.get("sample-files/indoor-image.png");
+var mask = Paths.get("sample-files/indoor-mask.png");
+
+var input = new ImageEditInput.Builder()
+        .setImage(image)
+        .setMask(mask)
+        .setModel("dall-e-2")
+        .setPrompt("A sunlit indoor lounge area with a pool containing a car")
+        .setN(1)
+        .setSize("1024x1024")
+        .build();
+var response = client.images().edit(input);
+System.out.println(response.data.get(0).url);
+```
+
+### Create image variation
+
+``` java
+var client = new OpenAI(System.getenv("OPENAI_API_KEY"));
+
+var image = Paths.get("sample-files/indoor-image.png");
+
+var input = new ImageVariationInput.Builder()
+        .setImage(image)
+        .setModel("dall-e-2")
+        .setN(1)
+        .setSize("1024x1024")
+        .build();
+var response = client.images().createVariation(input);
+System.out.println(response.data.get(0).url);
+```
+
 ## Supported APIs
 
 - Audio
